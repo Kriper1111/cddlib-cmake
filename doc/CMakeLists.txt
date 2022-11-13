@@ -23,6 +23,10 @@ if(LATEX)
         DEPENDS "${DOCS_DIR}/cddlibman.dvi"
         COMMENT "Building latex docs"
     )
+    install(
+        FILES "${DOCS_DIR}/cddlibman.dvi"
+        DESTINATION "${CMAKE_INSTALL_DOCDIR}/cddlib"
+    )
 endif(LATEX)
 
 if(PDF_LATEX)
@@ -42,6 +46,11 @@ if(PDF_LATEX)
         DEPENDS "${DOCS_DIR}/cddlibman.pdf"
         COMMENT "Building pdf docs"
     )
+
+    install(
+        FILES "${DOCS_DIR}/cddlibman.pdf"
+        DESTINATION "${CMAKE_INSTALL_DOCDIR}/cddlib"
+    )
 endif(PDF_LATEX)
 
 if(DVIPS)
@@ -55,6 +64,10 @@ if(DVIPS)
     add_custom_target(docs-dvips
         DEPENDS "${DOCS_DIR}/cddlibman.ps"
         COMMENT "Building .ps docs"
+    )
+    install(
+        FILES "${DOCS_DIR}/cddlibman.ps"
+        DESTINATION "${CMAKE_INSTALL_DOCDIR}/cddlib"
     )
 endif(DVIPS)
 
@@ -79,8 +92,3 @@ if(LATEX_TO_HTML)
         COMMENT "Building HTML docs"
     )
 endif(LATEX_TO_HTML)
-
-install(
-    FILES "${DOCS_DIR}/cddlibman.pdf" "${DOCS_DIR}/cddlibman.dvi" "${DOCS_DIR}/cddlibman.ps"
-    DESTINATION "${CMAKE_INSTALL_DOCDIR}/cddlib"
-)
