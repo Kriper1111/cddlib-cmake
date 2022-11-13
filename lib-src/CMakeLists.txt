@@ -6,10 +6,12 @@ set(libcdd_HEADERS cdd.h cddmp.h cddtypes.h
     setoper.h splitmix64.h
 )
 
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 message("libcdd_SOURCES = ${libcdd_SOURCES}")
 message("libcdd_HEADERS = ${libcdd_HEADERS}")
 
-add_library(cdd ${libcdd_SOURCES})
+add_library(cdd ${libcdd_SOURCES} ${libcdd_HEADERS})
 target_compile_options(cdd PRIVATE -UGMPRATIONAL)
 
 install(TARGETS cdd)

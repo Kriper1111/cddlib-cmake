@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.12)
 
 project(cddlib VERSION 0.94.13)
 
@@ -12,6 +12,10 @@ include(CheckIncludeFile)
 if(WIN32)
     add_link_options(-no-undefined)
 endif(WIN32)
+
+if(MSVC)
+    add_compile_definitions(_Thread_local=__declspec\(thread\))
+endif(MSVC)
 
 set(CDD_LIBS cdd)
 
