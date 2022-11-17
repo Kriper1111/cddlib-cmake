@@ -9,8 +9,10 @@ set(libcdd_version_info "1:2:1")
 include(CheckIncludeFile)
 # include(CMakePackageConfigHelpers)
 
+option(BUILD_BINARIES on)
+
 if(WIN32)
-    add_link_options(-no-undefined)
+    add_link_options(LINKER:-no-undefined)
 endif(WIN32)
 
 if(MSVC)
@@ -26,4 +28,6 @@ endif(HAS_GMP_H)
 
 add_subdirectory(doc)
 add_subdirectory(lib-src)
-add_subdirectory(src)
+if(BUILD_BINARIES)
+    add_subdirectory(src)
+endif(BUILD_BINARIES)
